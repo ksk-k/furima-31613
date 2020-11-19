@@ -55,6 +55,7 @@ commentsテーブル
 | Column    | Type      | Options  | 
 | --------- | --------- | -------- |
 | text      | text      | not null |
+| user      | reference |          |
 | item      | reference | not null |
 
 ### Association
