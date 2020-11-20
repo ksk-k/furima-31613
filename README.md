@@ -6,6 +6,12 @@ usersテーブル
 | nickname | string | not null |
 | password | string | not null |
 
+### Association
+- has_many : items
+- has_many : profiles
+- has_many : comments
+- has_one : deliveries
+- has_one : purchases
 
 itemsテーブル
 | Column          | Type      | Options  |
@@ -13,49 +19,69 @@ itemsテーブル
 | item_name       | string    | not null |
 | image           |           |          |
 | text            | text      | not null |
-| category        |           | not null |
-| condition       |           | not null |
-| delivery_fee    |           | not null |
-| shipment_source |           | not null |
-| shipping_date   |           | not null |
-| price           | text      | not null |
+| category        | integer   | not null |
+| condition       | integer   | not null |
+| delivery_fee    | integer   | not null |
+| shipment_source | integer   | not null |
+| shipping_date   | integer   | not null |
+| price           | integer   | not null |
 | user            | reference | not null |
 
+### Association
+- has_many : users
+- has_many : comments
+- has_one : purchases
 
 profilesテーブル
 | Column          | Type      | Options  |
 | --------------- | --------- | -------- |
-| name            |   text    | not null |
-| kana_name       |           | not null |
-| birthday        |           | not null |
+| last_name       | string    | not null |
+| first_name      | string    | not null |
+| last_kana       | string    | not null |
+| first_kana      | string    | not null |
+| birthday        | integer   | not null |
 | user            | reference | not null |
+
+### Association
+- belongs_to :user
+- belongs_to :item
+- has_one : deliveries
+
 
 purchasesテーブル
 | Column          | Type      | Options  |
 | --------------- | --------- | -------- |
-| card            | text      | not null |
-| expiration_data | text      | not null |
-| security_code   | text      | not null |
 | user            | reference | not null |
 | item            | reference | not null |
+
+### Association
+- belongs_to :user
+- belongs_to :item
+
 
 deliveriesテーブル
 | Column          | Type      | Options  |
 | --------------- | --------- | -------- |
-| postal_code     |           | not null |
-| prefectures     |           | not null |
-| municipality    |           | not null |
-| building_name   | text      | not null |
-| phone_number    | text      | not null |
+| postal_code     | string    | not null |
+| prefectures     | integer   | not null |
+| municipality    | string    | not null |
+| building_name   | string    | not null |
+| phone_number    | string    | not null |
 | user            | reference | not null |
 | item            | reference | not null |
 
+### Association
+- belongs_to :user
+- belongs_to :item
+- belongs_to :purchases
 
 commentsテーブル
 | Column    | Type      | Options  | 
 | --------- | --------- | -------- |
 | text      | text      | not null |
-| user      | reference |          |
+| user      | reference | not null |
 | item      | reference | not null |
 
 ### Association
+- belongs_to :user
+- belongs_to :item
