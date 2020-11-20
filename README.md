@@ -21,7 +21,7 @@ itemsテーブル
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
-| text               | text       | null: false                    |
+| item_detail        | text       | null: false                    |
 | category_id        | integer    | null: false                    |
 | condition_id       | integer    | null: false                    |
 | delivery_fee_id    | integer    | null: false                    |
@@ -33,7 +33,7 @@ itemsテーブル
 ### Association
 - belongs_to : user
 - has_many : comments
-- has_many : purchases
+- has_one : purchases
 
 purchasesテーブル
 | Column          | Type       | Options                        |
@@ -44,7 +44,7 @@ purchasesテーブル
 ### Association
 - belongs_to :user
 - belongs_to :item
-- hes_one : deliveries
+- has_one : delivery
 
 
 deliveriesテーブル
