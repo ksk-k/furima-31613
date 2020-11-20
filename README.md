@@ -31,7 +31,7 @@ itemsテーブル
 | user               | references | null: false, foreign_key: true |
 
 ### Association
-- has_many : users
+- belongs_to : user
 - has_many : comments
 - has_many : purchases
 
