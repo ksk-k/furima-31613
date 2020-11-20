@@ -14,7 +14,7 @@ usersテーブル
 ### Association
 - has_many : items
 - has_many : comments
-- has_one : purchase
+- has_many : purchases
 
 
 itemsテーブル
@@ -33,7 +33,7 @@ itemsテーブル
 ### Association
 - has_many : users
 - has_many : comments
-- has_one : purchase
+- has_many : purchases
 
 purchasesテーブル
 | Column          | Type       | Options                        |
@@ -44,6 +44,7 @@ purchasesテーブル
 ### Association
 - belongs_to :user
 - belongs_to :item
+- hes_one : deliveries
 
 
 deliveriesテーブル
@@ -52,13 +53,12 @@ deliveriesテーブル
 | postal_code     | string     | null: false                    |
 | prefecture_id   | integer    | null: false                    |
 | municipality    | string     | null: false                    |
-| building_name   | string     | null: false                    |
+| address         | string     | null: false                    |
+| building_name   | string     |                                |
 | phone_number    | string     | null: false                    |
-| user            | references | null: false, foreign_key: true |
-| item            | references | null: false, foreign_key: true |
+| purchase        | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :item
 - belongs_to :purchase
 
 commentsテーブル
