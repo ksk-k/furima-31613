@@ -21,7 +21,7 @@ itemsテーブル
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
-| item_detail        | text       | null: false                    |
+| detail             | text       | null: false                    |
 | category_id        | integer    | null: false                    |
 | condition_id       | integer    | null: false                    |
 | delivery_fee_id    | integer    | null: false                    |
