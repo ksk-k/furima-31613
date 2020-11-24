@@ -13,49 +13,41 @@ RSpec.describe User, type: :model do
 
     context '新規登録が上手く行かないとき' do
       it "nicknameが空だと登録できない" do
-        @user = FactoryBot.build(:user)
         @user.nickname = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Nickname can't be blank")
       end
       it "emailが空だと登録できない" do
-        @user = FactoryBot.build(:user)
         @user.email = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
       it "passwordが空だと登録できない" do
-        @user = FactoryBot.build(:user)
         @user.password = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it "last_nameが空だと登録できない" do
-        @user = FactoryBot.build(:user)
         @user.last_name = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name can't be blank")
       end
       it "first_nameが空だと登録できない" do
-        @user = FactoryBot.build(:user)
         @user.first_name = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("First name can't be blank")
       end
       it "last_kanaが空だと登録できない" do
-        @user = FactoryBot.build(:user)
         @user.last_kana = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Last kana can't be blank")
       end
       it "first_kanaが空だと登録できない" do
-        @user = FactoryBot.build(:user)
         @user.first_kana = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("First kana can't be blank")
       end
       it "birthdayが空だと登録できない" do
-        @user = FactoryBot.build(:user)
         @user.birthday = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Birthday can't be blank")
@@ -65,14 +57,14 @@ RSpec.describe User, type: :model do
 
   describe"その他条件" do
     it "他に同一のemailがあると登録できない" do
-      user = User.new(nickname: "y", email:"aaa@gmail.com", password:"k00000", password_confirmation:"k00000", last_name:"山田", first_name:"太郎", last_kana:"ヤマダ", first_kana:"タロウ", birthday:"2000-1-1")
-      user.save
-      another_user = FactoryBot.build(:user, email: user.email)
+      @user = User.new(nickname: "y", email:"aaa@gmail.com", password:"k00000", password_confirmation:"k00000", last_name:"山田", first_name:"太郎", last_kana:"ヤマダ", first_kana:"タロウ", birthday:"2000-1-1")
+      @user.save
+      another_user = FactoryBot.build(:user, email: @user.email)
       another_user.valid?
       expect(another_user.errors.full_messages).to include("Email has already been taken")
     end
     it "emailに'@'を含んでいないと登録できない"do
-      user = User.new(nickname: "y", email:"aaagmail.com", password:"k00000", password_confirmation:"k00000", last_name:"山田", first_name:"太郎", last_kana:"ヤマダ", first_kana:"タロウ", birthday:"2000-1-1")
+      @user.email = "aaagmail.com"
       @user.valid?
     end
     it "passwordが6文字以上でないと登録できない"do
