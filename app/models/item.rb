@@ -3,13 +3,13 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   with_options presence: true do
-    validataes :name
-    validataes :detail
-    validataes :category_id
-    validataes :condition_id
-    validataes :delivery_fee_id
-    validataes :prefecture_id
-    validataes :shipping_date_id
-    validataes :price
+    validates :name
+    validates :detail
+    validates :category_id
+    validates :condition_id
+    validates :delivery_fee_id
+    validates :prefecture_id
+    validates :shipping_date_id
+    validates :price
   end
 end
