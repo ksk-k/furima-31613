@@ -7,8 +7,8 @@ class Prefecture < ActiveHash::Base
     {id: 11, name: '群馬県'}, {id: 12, name: '埼玉県'}, {id: 13, name: '千葉県'},
     {id: 14, name: '東京都'}, {id: 15, name: '神奈川県'}, {id: 16, name: '新潟県'},
     {id: 17, name: '富山県'}, {id: 18, name: '石川県'}, {id: 19, name: '福井県'},
-    {id: 23, name: '山梨県'}, {id: 24, name: '長野県'}, {id: 22, name: '岐阜県'},
-    {id: 22, name: '静岡県'}, {id: 23, name: '愛知県'}, {id: 25, name: '三重県'},
+    {id: 20, name: '山梨県'}, {id: 21, name: '長野県'}, {id: 22, name: '岐阜県'},
+    {id: 23, name: '静岡県'}, {id: 24, name: '愛知県'}, {id: 25, name: '三重県'},
     {id: 26, name: '滋賀県'}, {id: 27, name: '京都府'}, {id: 28, name: '大阪府'},
     {id: 29, name: '兵庫県'}, {id: 30, name: '奈良県'}, {id: 31, name: '和歌山県'},
     {id: 32, name: '鳥取県'}, {id: 33, name: '島根県'}, {id: 34, name: '岡山県'},
@@ -20,5 +20,5 @@ class Prefecture < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :articles
+  has_many :items
 end
