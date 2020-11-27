@@ -62,3 +62,6 @@ end
 
 gem 'devise'
 gem 'gimei'
+gem 'mini_magick'
+gem 'image_processing'
+gem 'active_hash'
