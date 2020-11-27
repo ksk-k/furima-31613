@@ -12,17 +12,14 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :detail
-    validates :category_id, numericality: { other_than: 1 } 
-    validates :condition_id, numericality: { other_than: 1 } 
-    validates :delivery_fee_id, numericality: { other_than: 1 } 
-    validates :prefecture_id, numericality: { other_than: 1 } 
-    validates :shipping_date_id, numericality: { other_than: 1 } 
+    with_options numericality: { other_than: 1 } do
+      validates :category_id
+      validates :condition_id
+      validates :delivery_fee_id
+      validates :prefecture_id
+      validates :shipping_date_id
+    end
     VALID_PRICEL_HALF = /\A[0-9]+\z/
     validates :price,format: {with: VALID_PRICEL_HALF}, length: {minimum: 3, maxinum: 7},numericality: { only_integer: true,greater_than: 299, less_than: 10000000}
   end
 end
-
-
-
-
- 
