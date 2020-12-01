@@ -130,13 +130,11 @@
           <%= link_to "#" do %>
           <div class='item-img-content'>
             <%= link_to image_tag(item.image),item_path(item.id),  class: "item-img" if item.image.attached? %>
-
             <%# 商品が売れていればsold outを表示しましょう %>
             <div class='sold-out'>
               <span>Sold Out!!</span>
             </div>
             <%# //商品が売れていればsold outを表示しましょう %>
-
           </div>
           <div class='item-info'>
             <h3 class='item-name'>
@@ -152,8 +150,9 @@
           </div>
           <% end %>
         </li>
+      </ul>
+    <% end %>
         <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-
         <%# 商品がない場合のダミー %>
         <% if @items.length == 0 %>
           <%# 商品がある場合は表示されないようにしましょう %>
@@ -177,8 +176,6 @@
           <%# //商品がある場合は表示されないようにしましょう %>
         <% end %>
         <%# /商品がない場合のダミー %>
-      </ul>
-    <% end %>
   </div>
   <%# /商品一覧 %>
 </div>
