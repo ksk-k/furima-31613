@@ -14,7 +14,7 @@ usersテーブル
 ### Association
 - has_many : items
 - has_many : comments
-- has_many : purchases
+- has_many : orders
 
 
 itemsテーブル
@@ -33,9 +33,9 @@ itemsテーブル
 ### Association
 - belongs_to : user
 - has_many : comments
-- has_one : purchases
+- has_one : order
 
-purchasesテーブル
+orderテーブル
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | user            | references | null: false, foreign_key: true |
@@ -44,10 +44,10 @@ purchasesテーブル
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one : delivery
+- has_one : ship
 
 
-deliveriesテーブル
+shipsテーブル
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | postal_code     | string     | null: false                    |
@@ -59,7 +59,7 @@ deliveriesテーブル
 | purchase        | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :purchase
+- belongs_to :orders
 
 commentsテーブル
 | Column    | Type       | Options                        | 
@@ -68,6 +68,6 @@ commentsテーブル
 | purchase  | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :purchases
+- belongs_to :orders
 
 
