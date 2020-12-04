@@ -1,15 +1,22 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @item = Item.find(params[:item_id])
     @order_form = OrderForm.new
+    if current_user == @item.user
+      redirect_to root_path
+    end
+
+    if @item.order.present?
+      redirect_to root_path
+    end
   end
 
   def create
     @item = Item.find(params[:item_id])
     @order_form = OrderForm.new(order_form_params)
     if @order_form.valid?
-      binding.pry
       Payjp.api_key = "sk_test_8e52814ee97fb2d2a6823ee2"
       Payjp::Charge.create(
         amount: @item.price,
@@ -17,7 +24,7 @@ class OrdersController < ApplicationController
         currency: 'jpy'
       )
       @order_form.save
-      redirect_to action: :index
+      redirect_to root_path
     else
       render action: :index
     end
