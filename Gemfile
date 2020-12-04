@@ -60,8 +60,10 @@ group :development do
   gem 'rubocop', require: false
 end
 
+gem 'pry-rails'
 gem 'devise'
 gem 'gimei'
 gem 'mini_magick'
 gem 'image_processing'
 gem 'active_hash'
+gem 'payjp'
