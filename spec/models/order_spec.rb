@@ -43,6 +43,22 @@ RSpec.describe Order, type: :model do
         expect(@order_form.errors.full_messages).to include("Token can't be blank")
       end
     end
-    
+
+    context "商品購入がうまくいかないとき(その他)" do
+      it "郵便番号にはハイフンがないと購入できない" do
+        @order_form.postal_code = "1111111"
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include("Postal code is invalid")
+      end
+      it "電話番号にはハイフンがあると購入できない" do
+        @order_form.phone_number = "12-345-6789"
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include("Phone number is invalid")
+      end
+      it "電話番号は12桁以上だと購入できない" do
+        @order_form.phone_number = 111111111111
+        @order_form.valid?
+      end
+    end
   end
 end
