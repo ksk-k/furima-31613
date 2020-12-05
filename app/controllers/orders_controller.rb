@@ -4,11 +4,7 @@ class OrdersController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
     @order_form = OrderForm.new
-    if current_user == @item.user
-      redirect_to root_path
-    end
-
-    if @item.order.present?
+    if current_user == @item.user || @item.order.present?
       redirect_to root_path
     end
   end
