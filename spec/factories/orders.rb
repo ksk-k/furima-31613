@@ -4,6 +4,7 @@ FactoryBot.define do
     prefecture_id {2}
     municipality {"尼崎市"}
     address {"1-1"}
+    building_name {"123aaa"}
     phone_number {"12345678909"}
     token {"tok_abcdefghijk00000000000000000"}
     user_id {1}

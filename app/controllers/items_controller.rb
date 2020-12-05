@@ -24,7 +24,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-     redirect_to root_path unless current_user.id == @item.user_id
+    if @item.order.present? || current_user.id != @item.user_id
+      redirect_to root_path
+    end
   end
 
   def update
@@ -40,7 +42,7 @@ class ItemsController < ApplicationController
     @item.destroy
     redirect_to root_path
   end
-  
+
   private
 
   def item_params

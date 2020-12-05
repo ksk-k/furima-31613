@@ -9,6 +9,10 @@ RSpec.describe Order, type: :model do
       it "token,postal_code,prefecture_id,municipality,address,phone_number,user_id,item_idが存在していれば購入できる" do
         expect(@order_form).to be_valid
       end
+      it "building_nameが空でも購入ができる" do
+        @order_form.building_name = ""
+        expect(@order_form).to be_valid
+      end
     end
 
     context "商品購入がうまくいかないとき" do
@@ -64,7 +68,7 @@ RSpec.describe Order, type: :model do
         expect(@order_form.errors.full_messages).to include("Phone number is invalid")
       end
       it "電話番号は12桁以上だと購入できない" do
-        @order_form.phone_number = 111111111111
+        @order_form.phone_number = "111111111111"
         @order_form.valid?
       end
     end
