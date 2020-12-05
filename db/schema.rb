@@ -70,15 +70,16 @@ ActiveRecord::Schema.define(version: 2020_12_03_031137) do
   end
 
   create_table "ships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "postal_code", null: false
+    t.integer "prefecture_id", null: false
+    t.string "municipality", null: false
+    t.string "address", null: false
+    t.string "building_name"
+    t.string "phone_number", null: false
+    t.bigint "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "postal_code"
-    t.integer "prefecture_id"
-    t.string "municipality"
-    t.string "address"
-    t.string "building_name"
-    t.string "phone_number"
-    t.integer "order_id"
+    t.index ["order_id"], name: "index_ships_on_order_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -103,4 +104,5 @@ ActiveRecord::Schema.define(version: 2020_12_03_031137) do
   add_foreign_key "items", "users"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
+  add_foreign_key "ships", "orders"
 end

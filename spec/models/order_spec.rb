@@ -6,7 +6,7 @@ RSpec.describe Order, type: :model do
   end
   describe "商品購入" do
     context "商品購入がうまくいくとき" do
-      it "token,postal_code,prefecture_id,municipality,address,phone_numberが存在していれば購入できる" do
+      it "token,postal_code,prefecture_id,municipality,address,phone_number,user_id,item_idが存在していれば購入できる" do
         expect(@order_form).to be_valid
       end
     end
@@ -41,6 +41,14 @@ RSpec.describe Order, type: :model do
         @order_form.token = ""
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("Token can't be blank")
+      end
+      it "user_idが空だと購入できない" do
+        @order_form.user_id = nil
+        @order_form.valid?
+      end
+      it "item_idが空だと購入できない" do
+        @order_form.item_id = nil
+        @order_form.valid?
       end
     end
 
